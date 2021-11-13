@@ -78,10 +78,9 @@ class AutosController{
                 $modelo = $_POST['modelo'];
                 $anio = $_POST['anio'];
                 $precio = $_POST['precio'];
-                $descrip = $_POST['descrip'];
-                echo("hasta aca llego antes de  ir a editar");
+                $descrip = $_POST['descrip'];                
                 AutosM::editar($id, $patente, $marca, $modelo, $anio, $precio, $descrip);
-                header('Location:./index.php?rutas=mostrar');
+                return include_once "vista/modulos/mostrar.php"; 
             }
 
             return include_once "vista/modulos/editar.php";

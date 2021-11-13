@@ -101,7 +101,7 @@ class AutosM extends ConexionDb
                             modelo='$_modelo', 
                             anio='$_anio',
                             precio='$_precio',
-                            descrip='$_descrip
+                            descrip='$_descrip'
                             WHERE ID = '$_id'";
         $exito = mysqli_query($conexion, $query);
         if(!$exito){
