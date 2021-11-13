@@ -96,4 +96,12 @@ class AutosController{
         
         
     }
+    public function borrar(){
+        if(isset($_GET['ID'])){
+            AutosM::borrar($_GET['ID']);
+
+            include_once("vista/modulos/mostrar.php");
+        }
+        
+    }
 }
