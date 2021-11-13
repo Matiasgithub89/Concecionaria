@@ -29,10 +29,12 @@
           <td><?php echo $auto->precio ?></td>
           <td><?php echo $auto->descrip ?></td>
           <td>
+            <form method="post">
             <div class="btn-group" role="group" aria-label="">
-              <a href="index.php?accion=editar&id=<?php echo $auto->getID() ?>" class="btn btn-primary">Editar</a>
-              <a href="index.php?accion=borrar&id=<?php echo $auto->getID() ?>" class="btn btn-danger">Borrar</a>
+              <a href="index.php?accion=editar&ID=<?php echo $auto->getID() ?>" class="btn btn-primary" >Editar</a>
+              <a href="index.php?accion=borrar&ID=<?php echo $auto->getID() ?>" class="btn btn-danger">Borrar</a>
             </div>
+            </form>
           </td>
 
         </tr>

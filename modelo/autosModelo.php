@@ -93,4 +93,47 @@ class AutosM extends ConexionDb
             echo "Hubo un error al eliminar el registro: ".mysqli_error($conexion);
         }
     }
+    public static function editar($_id, $_patente, $_marca, $_modelo, $_anio, $_precio, $_descrip){
+        $conexion = ConexionDb::crearConexion();
+        $query = "UPDATE autos SET 
+                            patente ='$_patente',
+                            marca ='$_marca', 
+                            modelo='$_modelo', 
+                            anio='$_anio',
+                            precio='$_precio',
+                            descrip='$_descrip
+                            WHERE ID = '$_id'";
+        $exito = mysqli_query($conexion, $query);
+        if(!$exito){
+            echo "Hubo un error al actualizar el auto: ".mysqli_error($conexion);
+        }
+    }
+    public static function Buscar($_id){
+        //Obtenemos una conexion a la base de datos
+        $conexion = ConexionDb::crearConexion();
+        //Armamos la consulta que sera ejecutada en la base de datos
+        $query = "SELECT * FROM autos WHERE ID = '$_id' ";
+
+        //Vericamos que se ejecute correctamente la consulta y en caso contrario, capturamos el error
+        try{
+            $resultado = mysqli_query($conexion, $query);
+        }
+        catch(Exception $e){
+            //Guardamos el mensaje para el programador
+            guardarError($e->getMessage(), $e->getLine() ,$e->getFile());
+            //Lanzamos un mensaje para el usuario
+            throw new DatabaseExeption("no pudimos obtener los datos del producto");
+        }
+
+        if (mysqli_num_rows($resultado) > 0){
+            //Obtenemos el resultado como un objeto
+            $auto = $resultado->fetch_object();
+            //Devolvemos un objeto del tipo Producto
+            return new AutosM($auto->ID, $auto->patente, $auto->marca, $auto->modelo, $auto->anio, $auto->precio, $auto->descrip);
+        }
+        else{
+            throw new DatabaseExeption("el producto con ese ID no se encuentro");
+        }
+        
+    }
 }

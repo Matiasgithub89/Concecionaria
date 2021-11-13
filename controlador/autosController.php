@@ -1,6 +1,7 @@
 <?php
 include_once "modelo/conexionDb.php";
 include_once "modelo/autosModelo.php";
+
 class AutosController{
     public function RegistrarAuto(){
         if(isset($_POST['btn']))
@@ -62,5 +63,38 @@ class AutosController{
             }    
             
         }
+    }    
+    public function editar(){        
+        try{
+            if(isset($_GET['ID'])){
+                $auto =  AutosM::Buscar($_GET['ID']);
+            }
+
+            if($_POST){
+                
+                $id = $_POST['id'];
+                $patente = $_POST['patente'];
+                $marca = $_POST['marca'];
+                $modelo = $_POST['modelo'];
+                $anio = $_POST['anio'];
+                $precio = $_POST['precio'];
+                $descrip = $_POST['descrip'];
+                echo("hasta aca llego antes de  ir a editar");
+                AutosM::editar($id, $patente, $marca, $modelo, $anio, $precio, $descrip);
+                header('Location:./index.php?rutas=mostrar');
+            }
+
+            return include_once "vista/modulos/editar.php";
+        }
+        catch(DatabaseExeption $e){
+            $error = $e->errorMessage();
+            return include_once "vista/modulos/error.php";
+        }
+        catch(Exception $e){
+            $error = "ocurrio un error al cargar la vista";
+            return include_once "vista/modulos/error.php";
+        }
+        
+        
     }
 }

@@ -19,12 +19,12 @@
               Buscar auto
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <!--<li class="nav-item">
+            <a class="nav-link" href="index.php?rutas=editar">
               <span data-feather="users"></span>
-              Usuarios
+              Editar Datos Auto
             </a>
-          </li>
+          </li>-->
           <li class="nav-item">
             <a class="nav-link" href="index.php?rutas=grafico">
               <span data-feather="bar-chart-2"></span>

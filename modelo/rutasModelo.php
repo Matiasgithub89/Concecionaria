@@ -2,7 +2,7 @@
 
 class Modelo{
     static public function RutasModelo($rutas){
-        if ($rutas == "ingreso" || $rutas == "registrar"|| $rutas == "mostrar"||$rutas == "buscarAuto"|| $rutas == "grafico"){//Si hay una ruta valida
+        if ($rutas == "ingreso" || $rutas == "registrar"|| $rutas == "mostrar"||$rutas == "buscarAuto"|| $rutas == "grafico" || $rutas=="editar"){//Si hay una ruta valida
            
             $pagina = "vista/modulos/".$rutas .".php";//generamos un link a partir del contenido de la variable ruta concatenando
         
