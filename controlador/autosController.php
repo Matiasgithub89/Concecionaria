@@ -63,11 +63,20 @@ class AutosController{
             }    
             
         }
-    }    
+    }  
+   /* public function editarIdUrl(){  
+             
+        if(isset($_POST['btn-buscarID'])){            
+                $_ID= $_POST['ID'];
+                
+            }       
+    }  */
     public function editar(){        
         try{
             if(isset($_GET['ID'])){
                 $auto =  AutosM::Buscar($_GET['ID']);
+            }else if(isset($_POST['ID'])){
+                $auto =  AutosM::Buscar($_POST['ID']);   
             }
 
             if($_POST){

@@ -1,14 +1,19 @@
 <!-- Vista desde donde editaremos un producto -->
-<div class="card">
-    <div class="card-header">
-            Buscar por id
-        <div class="mb-3">
-            <input type="text"
-            class="form-control" name="id" id="nombre" aria-describedby="helpId" placeholder="Ingrese el id de producto">
-        </div>
-        <input name="" id="" class="btn btn-success" type="submit" value="Buscar">
-    </div>
-</div>
+<form >
+  <div class="card">
+      <div class="card-header">
+              Buscar por id
+          <div class="mb-3">
+              <input type="text" class="form-control" name='ID'  aria-describedby="helpId" placeholder="Ingrese la ID">
+          </div>
+          <input value="buscar"  id="" class="btn btn-success" type="submit" name="">
+      </div>
+  </div>
+</form>
+<?php
+$autobuscado = new AutosController();
+$autobuscado->editar();
+?>
 
 <div class="card" color="red">
     <div class="card-header">

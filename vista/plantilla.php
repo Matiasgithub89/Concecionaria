@@ -39,7 +39,7 @@
 </head>
 
 <body>
-
+    
     <?php include_once "vista/modulos/header.php" ?>
     
 
