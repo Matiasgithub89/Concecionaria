@@ -24,11 +24,8 @@ class AutosM extends ConexionDb
     }
     public function getPatente(){
         return $this->patente;
-    }
-    
-   
-    public static function RegistrarAutosM($_patente,$_marca, $_modelo, $_anio, $_precio, $_descrip)
-    {
+    }   
+    public static function RegistrarAutosM($_patente,$_marca, $_modelo, $_anio, $_precio, $_descrip){
 
         $conexion = ConexionDb::crearConexion();
 
@@ -50,7 +47,7 @@ class AutosM extends ConexionDb
             //Obtener la lista de usuarios 
             while ($auto= $resultado->fetch_object()) {
 
-                $listaauto[] = new AutosM($auto->ID, $auto->patente, $auto->marca, $auto->modelo, $auto->anio,$auto->precio,$auto->descrip);
+                $listaauto[] = new AutosM($auto->ID, $auto->patente, $auto->marca, $auto->modelo, $auto->anio, $auto->precio, $auto->descrip);
             }
         }
 
@@ -61,6 +58,34 @@ class AutosM extends ConexionDb
         $conexion = ConexionDb::crearConexion();
         //Armamos la consulta que sera ejecutada en la base de datos
         $query = "SELECT * FROM autos WHERE patente = '$patente' ";
+        //Ejecutamos la consulta
+        $resultado = mysqli_query($conexion, $query);
+
+        //Vericamos que se halla ejecutado correctamente la consulta
+        if($resultado){
+            //Verificamos que halla encontrado un resultado
+            if (mysqli_num_rows($resultado) > 0){
+                //Obtenemos el resultado como un objeto
+                $auto = $resultado->fetch_object();
+
+                //Devolvemos un objeto del tipo auto
+                return new AutosM($auto->ID, $auto->patente, $auto->marca, $auto->modelo, $auto->anio,$auto->precio,$auto->descrip);
+               
+            }
+            else{
+                echo "El el auto con esa patente no se encuentro";
+            }
+            
+        }
+        else{
+            echo "Hubo un error al buscar el auto: ".mysqli_error($conexion);
+        }
+    }
+    public static function BuscarID($id){
+        //Obtenemos una conexion a la base de datos
+        $conexion = ConexionDb::crearConexion();
+        //Armamos la consulta que sera ejecutada en la base de datos
+        $query = "SELECT * FROM autos WHERE id = '$id' ";
         //Ejecutamos la consulta
         $resultado = mysqli_query($conexion, $query);
 

@@ -1,4 +1,4 @@
-<h2>Patente encontrada | <?php echo $auto->getPatente() ?></h2> 
+<h2>Patente: <?php echo $auto->getPatente() ?> | ID: <?php echo $auto->getID() ?></h2> 
 <div class="table-responsive">
   <table class="table table-striped table-sm">
     <thead>
@@ -26,10 +26,12 @@
         <td><?php echo $auto->precio ?></td>
         <td><?php echo $auto->descrip ?></td>
         <td>
-          <div class="btn-group" role="group" aria-label="">
-            <a href="index.php?accion=editar&id=<?php echo $auto->getID() ?>" class="btn btn-primary">Editar</a>
-            <a href="index.php?accion=borrar&id=<?php echo $auto->getID() ?>" class="btn btn-danger">Borrar</a>
-          </div>
+        <form method="post">
+            <div class="btn-group" role="group" aria-label="">
+              <a href="index.php?accion=editar&ID=<?php echo $auto->getID() ?>" class="btn btn-primary" >Editar</a>
+              <a href="index.php?accion=borrar&ID=<?php echo $auto->getID() ?>" class="btn btn-danger">Borrar</a>
+            </div>
+            </form>
         </td>
 
       </tr>

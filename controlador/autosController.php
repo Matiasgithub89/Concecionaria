@@ -64,6 +64,28 @@ class AutosController{
             
         }
     }  
+    public function BuscarID(){
+        if(isset($_POST['btn-buscar-id']))
+        {
+            $_id= $_POST['id'];
+            $buttonOption = $_POST['btn-buscar-id'];
+            
+            $database = new ConexionDb();
+
+            switch ($buttonOption) 
+            {
+                case 'consulta_id':
+                if(!empty($_id))
+                {                    
+                    $auto = AutosM::BuscarID($_id);
+                    include "vista/modulos/mostrarbuscado.php";                     
+                }
+                break;
+                $database->cerrarConexion();
+            }    
+            
+        }
+    }  
    /* public function editarIdUrl(){  
              
         if(isset($_POST['btn-buscarID'])){            
@@ -76,14 +98,10 @@ class AutosController{
             if(isset($_GET['ID'])){
                 $auto =  AutosM::Buscar($_GET['ID']);
                
-            }else if($_POST['id']){                
-
-                $auto =  AutosM::Buscar($_POST['id']);              
-                               
             }
             
             if($_POST && (!isset($_POST['btn']))){
-                
+                echo("Primer Post");
                 $id = $_POST['id'];
                 $patente = $_POST['patente'];
                 $marca = $_POST['marca'];
@@ -94,6 +112,7 @@ class AutosController{
                 AutosM::editar($id, $patente, $marca, $modelo, $anio, $precio, $descrip);
                 return include_once "vista/modulos/mostrar.php"; 
             }
+           
 
             return include_once "vista/modulos/editar.php";
         }

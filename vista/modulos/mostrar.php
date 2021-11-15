@@ -1,4 +1,5 @@
 <?php include "vista/modulos/buscarAuto.php"?>
+<?php include "vista/modulos/buscarAutoID.php"?>
 <hr>
 <h2>Autos Cargados</h2>
 <div class="table-responsive">
