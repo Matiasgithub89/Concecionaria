@@ -71,15 +71,18 @@ class AutosController{
                 
             }       
     }  */
-    public function editar(){        
+    public static function editar(){        
         try{
             if(isset($_GET['ID'])){
                 $auto =  AutosM::Buscar($_GET['ID']);
-            }else if(isset($_POST['ID'])){
-                $auto =  AutosM::Buscar($_POST['ID']);   
-            }
+               
+            }else if($_POST['id']){                
 
-            if($_POST){
+                $auto =  AutosM::Buscar($_POST['id']);              
+                               
+            }
+            
+            if($_POST && (!isset($_POST['btn']))){
                 
                 $id = $_POST['id'];
                 $patente = $_POST['patente'];

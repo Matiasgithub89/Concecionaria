@@ -13,11 +13,16 @@ class RutasControlador{//creamos la clase como la llamamos en nuestro index
         }else{
             $rutas ="index";
         }
-        if( isset($_GET['accion'])){
+        if( isset($_GET['accion'])){ 
             $accion= $_GET['accion'];
             $respuesta = AutosController::$accion();
-            return $respuesta;
-            
+            return $respuesta;         
+        }else if(isset ($_POST['accion'])){           
+           
+            $accion= $_POST['accion'];
+        
+            $respuesta = AutosController::$accion();
+            return $respuesta;            
         }
 
         $respuesta = Modelo::RutasModelo($rutas);//con la ruta anteriormente generada, podemos pasar a nuestro Modelo

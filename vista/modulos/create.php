@@ -1,37 +1,39 @@
-<form method="post">
-    <h3>Datos Auto</h3>
+<form method="post" class="need-validation" novalidate>
+    <h3>Datos Autoaaaa</h3>
     <div class="row g-3">
         <div class="mb-3">
-            <label for="" class="form-label">Patente</label>
-            <input type="text" class="form-control" id="" aria-describedby="" name="patente">
+            <label for="" class="form-label">Patentess</label>
+            <input type="text" class="form-control" id="" aria-describedby="" name="patente" required>
+            <!--<div class="valid-feedback">Campo requerido</div>-->
+            <div class="invalid-feedback">Ok</div>
             <div id="patente" class="form-text">Ejemplo: ab 123 za</div>
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Marca</label>
-            <input type="text" class="form-control" id="" aria-describedby="" name="marca">
+            <input type="text" class="form-control" id="" aria-describedby="" name="marca"required>
             <div id="emailHelp" class="form-text">Ejemplo:Volkswagen</div>
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Modelo</label>
-            <input type="text" class="form-control" id="" aria-describedby="" name="modelo">
+            <input type="text" class="form-control" id="" aria-describedby="" name="modelo"required>
             <div id="" class="form-text">Ejemplo:Golf</div>
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Año</label>
-            <input type="text" class="form-control" id="" aria-describedby="" name="anio">
+            <input type="text" class="form-control" id="" aria-describedby="" name="anio"required>
             <div id="" class="form-text">Ej:2000</div>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="precio">
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="precio"required>
             <span class="input-group-text">.00</span>
 
 
         </div>
-        <div id="" class="form-text">Ej:300000</div>
+        <div id="" class="form-text">Ej:400000</div>
         <div class="input-group">
             <span class="input-group-text">Descipción</span>
-            <textarea class="form-control" aria-label="With textarea" name="descrip"Value="alto auto"></textarea>
+            <textarea class="form-control" aria-label="With textarea" name="descrip"Value="alto auto"required></textarea>
         </div>
         <div id="" class="form-text">Ej:30.000 km, Nunca Taxi, Unico Dueño
         </div>

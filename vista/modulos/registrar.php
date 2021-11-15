@@ -1,10 +1,12 @@
-<form method="post">
+<form method="post"class="need-validation" novalidate>
     <h3>Datos Auto</h3>
     <div class="row g-3">
         <div class="mb-0">
             <label for="" class="form-label">Patente</label>
-            <input type="text" class="form-control" id="" aria-describedby="" name="patente">
+            <input type="text" class="form-control" id="" aria-describedby="" name="patente" required>
             <div id="patente" class="form-text">Ejemplo: ab 123 za</div>
+            <div class="valid-feedback">Campo requerido</div>
+            <div class="invalid-feedback">Ok</div>
         </div>
         <div class="mb-0">
             <label for="" class="form-label">Marca</label>
