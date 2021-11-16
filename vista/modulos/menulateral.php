@@ -14,7 +14,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php?rutas=buscarAuto">
+            <a class="nav-link" href="index.php?rutas=buscarPorFiltro">
               <span data-feather="info"></span>
               Buscar auto
             </a>
@@ -41,21 +41,21 @@
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="index.php?rutas=autoPorPrecio">
               <span data-feather="file-text"></span>
               Autos x Precio
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="index.php?rutas=autoPorAnio">
               <span data-feather="file-text"></span>
               Autos por Año
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="index.php?rutas=autoPorMarca">
               <span data-feather="file-text"></span>
-              Cantidad de Autos por Marca
+              Autos por Marca
             </a>
           </li>          
         </ul>

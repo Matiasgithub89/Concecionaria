@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <?php $autos = AutosM::consultar() ?>
+      <?php $autos = AutosM::consultarAutoPorMarca() ?>
       <?php
 
       foreach ($autos as $auto) { ?>

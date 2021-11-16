@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <?php $autos = AutosM::consultar() ?>
+      <?php $autos = AutosM::consultarAutoPorAnio() ?>
       <?php
 
       foreach ($autos as $auto) { ?>

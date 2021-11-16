@@ -53,6 +53,49 @@ class AutosM extends ConexionDb
 
         return $listaauto;
     }
+    public static function consultarAutoPorPrecio(){
+        $listaauto = [];
+        $conexion = ConexionDb::crearConexion();
+        $consulta = "SELECT * FROM autos ORDER BY precio asc";
+        if ($resultado = mysqli_query($conexion, $consulta)) {
+            //Obtener la lista de usuarios 
+            while ($auto= $resultado->fetch_object()) {
+
+                $listaauto[] = new AutosM($auto->ID, $auto->patente, $auto->marca, $auto->modelo, $auto->anio, $auto->precio, $auto->descrip);
+            }
+        }
+
+        return $listaauto;
+    }
+    public static function consultarAutoPorAnio(){
+        $listaauto = [];
+        $conexion = ConexionDb::crearConexion();
+        $consulta = "SELECT * FROM autos ORDER BY anio desc";
+        if ($resultado = mysqli_query($conexion, $consulta)) {
+            //Obtener la lista de usuarios 
+            while ($auto= $resultado->fetch_object()) {
+
+                $listaauto[] = new AutosM($auto->ID, $auto->patente, $auto->marca, $auto->modelo, $auto->anio, $auto->precio, $auto->descrip);
+            }
+        }
+
+        return $listaauto;
+    }
+
+    public static function consultarAutoPorMarca(){
+        $listaauto = [];
+        $conexion = ConexionDb::crearConexion();
+        $consulta = "SELECT * FROM autos ORDER BY marca asc";
+        if ($resultado = mysqli_query($conexion, $consulta)) {
+            //Obtener la lista de usuarios 
+            while ($auto= $resultado->fetch_object()) {
+
+                $listaauto[] = new AutosM($auto->ID, $auto->patente, $auto->marca, $auto->modelo, $auto->anio, $auto->precio, $auto->descrip);
+            }
+        }
+
+        return $listaauto;
+    }
     public static function BuscarPatente($patente){
         //Obtenemos una conexion a la base de datos
         $conexion = ConexionDb::crearConexion();

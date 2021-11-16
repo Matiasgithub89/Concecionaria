@@ -42,7 +42,7 @@ class AutosController{
             
         }
     }
-    public function BuscarPatente(){
+    public function BuscarPorFiltro(){
         if(isset($_POST['btn']))
         {
             $_patente= $_POST['patente'];
@@ -60,32 +60,19 @@ class AutosController{
                 }
                 break;
                 $database->cerrarConexion();
-            }    
-            
-        }
-    }  
-    public function BuscarID(){
-        if(isset($_POST['btn-buscar-id']))
-        {
-            $_id= $_POST['id'];
-            $buttonOption = $_POST['btn-buscar-id'];
-            
-            $database = new ConexionDb();
-
-            switch ($buttonOption) 
-            {
                 case 'consulta_id':
-                if(!empty($_id))
-                {                    
-                    $auto = AutosM::BuscarID($_id);
-                    include "vista/modulos/mostrarbuscado.php";                     
-                }
-                break;
-                $database->cerrarConexion();
+                    if(!empty($_id))
+                    {                    
+                        $auto = AutosM::BuscarID($_id);
+                        include "vista/modulos/mostrarbuscado.php";                     
+                    }
+                    break;
+                    $database->cerrarConexion();
             }    
             
         }
     }  
+    
    /* public function editarIdUrl(){  
              
         if(isset($_POST['btn-buscarID'])){            
