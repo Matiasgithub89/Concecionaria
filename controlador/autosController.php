@@ -46,6 +46,7 @@ class AutosController{
         if(isset($_POST['btn']))
         {
             $_patente= $_POST['patente'];
+            $_id= $_POST['id'];
             $buttonOption = $_POST['btn'];
             
             $database = new ConexionDb();

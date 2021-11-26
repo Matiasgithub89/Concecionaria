@@ -16,7 +16,7 @@
     <div class="mb-0 col-5">
         <label for="" class="form-label">Busqueda por Id</label>
         <div class="">
-            <input type="text" class="form-control" id="" aria-describedby="" name="ID" placeholder="Ejemplo: 1">
+            <input type="text" class="form-control" id="" aria-describedby="" name="id" placeholder="Ejemplo: 1">
         </div>
         <div class="col-12">
             <button type="submit" value="consulta_id" class="btn btn-primary mb-12" name="btn">Consultar por ID</button>
