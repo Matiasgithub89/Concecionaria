@@ -57,7 +57,8 @@
         </div>
     </div>
 </form>
-
+</br>
+<div><?php if(!empty($error)) {echo $error;}  ?> </div>
 <?php
 $registrar = new AutosController();
 $registrar->RegistrarAuto();

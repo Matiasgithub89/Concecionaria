@@ -8,7 +8,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php?rutas=mostrar">
+            <a class="nav-link" href="index.php?accion=mostrar">
               <span data-feather="file"></span>
               Mostrar Autos
             </a>
@@ -19,12 +19,12 @@
               Buscar auto
             </a>
           </li>
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link" href="index.php?rutas=editar">
               <span data-feather="users"></span>
               Editar Datos Auto
             </a>
-          </li>
+          </li>-->
           <li class="nav-item">
             <a class="nav-link" href="index.php?rutas=grafico">
               <span data-feather="bar-chart-2"></span>

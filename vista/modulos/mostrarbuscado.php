@@ -1,4 +1,5 @@
 <h2>Patente: <?php echo $auto->getPatente() ?> | ID: <?php echo $auto->getID() ?></h2> 
+<div><?php if(!empty($error)) {echo $error;}  ?> </div>
 <div class="table-responsive">
   <table class="table table-striped table-sm">
     <thead>

@@ -38,20 +38,31 @@ class AutosM extends ConexionDb
         } else {
             echo "Hubo un error al guardar los datos" . mysqli_error($conexion);
         }
+        ConexionDb::cerrarConexion($conexion);
     }
     public static function consultar(){
         $listaauto = [];
         $conexion = ConexionDb::crearConexion();
         $consulta = "SELECT * FROM autos";
-        if ($resultado = mysqli_query($conexion, $consulta)) {
-            //Obtener la lista de usuarios 
-            while ($auto= $resultado->fetch_object()) {
-
-                $listaauto[] = new AutosM($auto->ID, $auto->patente, $auto->marca, $auto->modelo, $auto->anio, $auto->precio, $auto->descrip);
-            }
-        }
-
-        return $listaauto;
+        try
+        {
+            $resultado = mysqli_query($conexion, $consulta);
+        }catch(Exception $e){
+            //Guardamos el mensaje para el programador
+            guardarError($e->getMessage(), $e->getLine() ,$e->getFile());
+            //Lanzamos un mensaje para el usuario
+            throw new DatabaseExeption("No pudimos conectar con la base de datos");
+        } 
+        if (mysqli_num_rows($resultado) > 0){            
+                //Obtener la lista de usuarios 
+                while ($auto= $resultado->fetch_object()) 
+                {
+                    $listaauto[] = new AutosM($auto->ID, $auto->patente, $auto->marca, $auto->modelo, $auto->anio, $auto->precio, $auto->descrip);
+                }
+                return $listaauto;            
+        }else{
+            throw new DatabaseExeption("No hay Autos cargados");
+        }      
     }
     public static function consultarAutoPorPrecio(){
         $listaauto = [];
@@ -96,6 +107,35 @@ class AutosM extends ConexionDb
 
         return $listaauto;
     }
+    public static function BuscarPatente($_patente){
+        //Obtenemos una conexion a la base de datos
+        $conexion = ConexionDb::crearConexion();
+        //Armamos la consulta que sera ejecutada en la base de datos
+        $query = "SELECT * FROM autos WHERE patente = '$_patente' ";
+
+        //Vericamos que se ejecute correctamente la consulta y en caso contrario, capturamos el error
+        try{
+            $resultado = mysqli_query($conexion, $query);
+        }
+        catch(Exception $e){
+            //Guardamos el mensaje para el programador
+            guardarError($e->getMessage(), $e->getLine() ,$e->getFile());
+            //Lanzamos un mensaje para el usuario
+            throw new DatabaseExeption("No pudimos conectar con la base de datos");
+        }
+
+        if (mysqli_num_rows($resultado) > 0){
+            //Obtenemos el resultado como un objeto
+            $auto = $resultado->fetch_object();
+            //Devolvemos un objeto del tipo Producto
+            return new AutosM($auto->ID, $auto->patente, $auto->marca, $auto->modelo, $auto->anio, $auto->precio, $auto->descrip);
+        }
+        else{
+            throw new DatabaseExeption("La patente que esta buscando no se encuentra");
+        }
+        
+    }
+    /*Reemplazo por el de tryCach
     public static function BuscarPatente($patente){
         //Obtenemos una conexion a la base de datos
         $conexion = ConexionDb::crearConexion();
@@ -116,14 +156,15 @@ class AutosM extends ConexionDb
                
             }
             else{
-                echo "El el auto con esa patente no se encuentro";
+                die("El el auto con esa patente no se Encontro");
             }
             
         }
         else{
             echo "Hubo un error al buscar el auto: ".mysqli_error($conexion);
         }
-    }
+    }*/
+    /*REEMPLAZADO POR LA FUNCION BUSCAR EDITAR
     public static function BuscarID($id){
         //Obtenemos una conexion a la base de datos
         $conexion = ConexionDb::crearConexion();
@@ -144,14 +185,14 @@ class AutosM extends ConexionDb
                
             }
             else{
-                echo "El el auto con esa patente no se encuentro";
+                die('El Registro con esa ID  no se encontro <a href=');
             }
             
         }
         else{
             echo "Hubo un error al buscar el auto: ".mysqli_error($conexion);
         }
-    }
+    }*/
     public static function borrar($id){
         $conexion = ConexionDb::crearConexion();
         $query = "DELETE FROM autos WHERE id = '$id'";
@@ -176,7 +217,7 @@ class AutosM extends ConexionDb
             echo "Hubo un error al actualizar el auto: ".mysqli_error($conexion);
         }
     }
-    public static function Buscar($_id){
+    public static function BuscarID($_id){
         //Obtenemos una conexion a la base de datos
         $conexion = ConexionDb::crearConexion();
         //Armamos la consulta que sera ejecutada en la base de datos
@@ -190,7 +231,7 @@ class AutosM extends ConexionDb
             //Guardamos el mensaje para el programador
             guardarError($e->getMessage(), $e->getLine() ,$e->getFile());
             //Lanzamos un mensaje para el usuario
-            throw new DatabaseExeption("no pudimos obtener los datos del producto");
+            throw new DatabaseExeption("No pudimos conectar con la base de datos");
         }
 
         if (mysqli_num_rows($resultado) > 0){
@@ -200,7 +241,7 @@ class AutosM extends ConexionDb
             return new AutosM($auto->ID, $auto->patente, $auto->marca, $auto->modelo, $auto->anio, $auto->precio, $auto->descrip);
         }
         else{
-            throw new DatabaseExeption("el producto con ese ID no se encuentro");
+            throw new DatabaseExeption("La ID que esta buscando no se encuentra");
         }
         
     }

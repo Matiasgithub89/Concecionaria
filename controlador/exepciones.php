@@ -1,4 +1,5 @@
 <?php
+include_once "./log.php";
     class DatabaseExeption extends Exception {
             //Mensaje personalizado para el usuario, cuando se produce un error en la BD
             public function errorMessage() {
@@ -11,8 +12,7 @@
     class FormularioException extends Exception {
         //Mensaje personalizado para el usuario, cuando se produce un error en el formulario
         public function errorMessage() {
-            $errorMsg = "Debe completar los campos obligatorios: ".$this->getMessage(); 
-            
+            $errorMsg = "Debe completar los campos obligatorios: ".$this->getMessage();             
             return $errorMsg;
         }
     }
@@ -24,21 +24,29 @@
     }
 
 
-    function validarForm($nombre, $cantidad, $precio){
+    function validarForm($_patente, $_marca, $_modelo, $_anio, $_precio, $_descrip){
         $mensaje = '';
 
-        if(empty($nombre)){
-            $mensaje = ' Nombre';
+        if(empty($_patente)){
+            $mensaje = ' Patente';
         }
 
-        if(empty($precio)){
-            $mensaje .= ' Precio';
+        if(empty($_marca)){
+            $mensaje .= ' Marca';
         }
 
-        if(empty($cantidad)){
-            $mensaje.= ' Cantidad';
+        if(empty($_modelo)){
+            $mensaje.= ' Modelo';
         }
-        
+        if(empty($_anio)){
+            $mensaje.= ' Anio';
+        }
+        if(empty($_precio)){
+            $mensaje.= ' Precio';
+        }
+        if(empty($_descrip)){
+            $mensaje.= ' Descripcion';
+        }
         if(!empty($mensaje)){
 
             throw new FormularioException($mensaje);

@@ -7,7 +7,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                Por favor intente acceder a esta seccion mas tarde.
+                Intente Nuevamente si lo decea o contacte un administrador.
             </div>
         </div>
     </div>

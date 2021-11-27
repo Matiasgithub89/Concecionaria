@@ -5,7 +5,7 @@
     //Abrimos el archivo en modo escritura con el puntero al final del archivo. Si no existe lo crea y 
     $fp = fopen($file, "a");
     //Usamos fwrite y le pasamos el puntero al archivo y el texto
-    fwrite($fp, $nuevoMensaje); //escribirá solo: Hola
+    fwrite($fp, $nuevoMensaje); 
     fclose($fp);
   }
     
