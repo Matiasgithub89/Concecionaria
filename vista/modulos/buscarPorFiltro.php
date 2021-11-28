@@ -11,8 +11,7 @@
             <button type="submit" value="consulta_patente" class="btn btn-primary mb-12" name="btn">Consultar por Patente</button>
         </div>
     </div>
-
-
+    
     <div class="mb-0 col-5">
         <label for="" class="form-label">Busqueda por Id</label>
         <div class="">
@@ -22,9 +21,17 @@
             <button type="submit" value="consulta_id" class="btn btn-primary mb-12" name="btn">Consultar por ID</button>
         </div>
     </div>
-
-
+    <div class="mb-0 col-5">
+        <label for="" class="form-label">Busqueda por Marca</label>
+        <div class="">
+            <input type="text" class="form-control" id="" aria-describedby="" name="marca" placeholder="Ejemplo: Fiat">
+        </div>
+        <div class="col-12">
+            <button type="submit" value="consulta_marca" class="btn btn-primary mb-12" name="btn">Consultar por Marca</button>
+        </div>
+    </div>
 </form>
+
 
 <?php
 $autobuscado = new AutosController();

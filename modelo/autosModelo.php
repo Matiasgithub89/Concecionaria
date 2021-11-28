@@ -64,6 +64,30 @@ class AutosM extends ConexionDb
             throw new DatabaseExeption("No hay Autos cargados");
         }      
     }
+    public static function consultarMarca($_marca){
+        $listaauto = [];
+        $conexion = ConexionDb::crearConexion();
+        $consulta = "SELECT * FROM autos WHERE marca LIKE '%$_marca%'";
+        try
+        {
+            $resultado = mysqli_query($conexion, $consulta);
+        }catch(Exception $e){
+            //Guardamos el mensaje para el programador
+            guardarError($e->getMessage(), $e->getLine() ,$e->getFile());
+            //Lanzamos un mensaje para el usuario
+            throw new DatabaseExeption("No pudimos conectar con la base de datos");
+        } 
+        if (mysqli_num_rows($resultado) > 0){            
+                //Obtener la lista de usuarios 
+                while ($auto= $resultado->fetch_object()) 
+                {
+                    $listaauto[] = new AutosM($auto->ID, $auto->patente, $auto->marca, $auto->modelo, $auto->anio, $auto->precio, $auto->descrip);
+                }
+                return $listaauto;            
+        }else{
+            throw new DatabaseExeption("No hay Autos cargados con esa marca");
+        }      
+    }
     public static function consultarAutoPorPrecio(){
         $listaauto = [];
         $conexion = ConexionDb::crearConexion();

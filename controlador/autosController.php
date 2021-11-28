@@ -33,19 +33,28 @@ class AutosController
             return include_once "vista/modulos/registrar.php";
         }
     }
-    public function BuscarPorFiltro()
+    public static function BuscarPorFiltro()
     {
         try {
             if (isset($_POST['btn'])) {
                 $_patente = $_POST['patente'];
                 $_id = $_POST['id'];
+                $_marca = $_POST['marca'];
                 $buttonOption = $_POST['btn'];
-
+                
+                
                 switch ($buttonOption) {
                     case 'consulta_patente':
                         if (!empty($_patente)) {
                             $auto = AutosM::BuscarPatente($_patente);
                             include "vista/modulos/mostrarbuscado.php";
+                        }
+                        break;
+                        $database->cerrarConexion($conexion);
+                    case 'consulta_marca':
+                        if (!empty($_marca)) {
+                            $auto = AutosM::consultarMarca($_marca);
+                            include "vista/modulos/mostrarbuscadoMarca.php";
                         }
                         break;
                         $database->cerrarConexion($conexion);
