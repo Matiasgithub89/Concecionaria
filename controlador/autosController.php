@@ -38,7 +38,7 @@ class AutosController
         try {
             if (isset($_POST['btn'])) {
                 $_patente = $_POST['patente'];
-                $_id = $_POST['id'];
+                /*$_id = $_POST['id'];*/
                 $_marca = $_POST['marca'];
                 $buttonOption = $_POST['btn'];
                 
